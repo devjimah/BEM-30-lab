@@ -1,0 +1,17 @@
+{
+  "name": "task-tracker-api",
+  "version": "1.0.0",
+  "description": "A simple Task Tracker API with CRUD operations",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["task", "tracker", "api", "express"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0"
+  }
+}
