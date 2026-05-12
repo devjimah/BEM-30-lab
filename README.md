@@ -365,24 +365,6 @@ Every API response follows a unified JSON structure:
   "success": false,
   "error": "Human-readable error message"
 }
-```
 
----
 
-## Evaluation Criteria Mapping
 
-| Criteria                  | Weight | How This Project Satisfies It |
-|---------------------------|--------|-------------------------------|
-| **Project Setup**         | 10%    | `package.json`, `.env`, `server.js`, and `dotenv` integration. Server boots successfully on configured port. |
-| **Routing & Parameters**  | 20%    | Five RESTful endpoints under `/api/tasks` with correct HTTP methods (`GET`, `POST`, `PUT`, `DELETE`) and status codes (`200`, `201`, `400`, `404`, `500`). |
-| **Middleware Usage**       | 15%    | Four middleware layers: JSON parser, request logger, 404 catcher, and global error handler. |
-| **Error Handling**         | 15%    | Validation for invalid IDs, missing data, and type mismatches. Global error handler catches unexpected errors. |
-| **MVC Structure**          | 15%    | Folders: `controllers/`, `routes/`, `middleware/`. Routes are thin; logic lives in controllers. |
-| **Response Format**        | 10%    | Clean, consistent JSON responses for both success and error cases. |
-| **Code Quality & Clarity** | 15%    | Readable code, descriptive variable names, modular files, and comprehensive documentation (this README). |
-
----
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
