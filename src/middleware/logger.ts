@@ -1,4 +1,6 @@
-const logger = (req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+
+const logger = (req: Request, res: Response, next: NextFunction): void => {
     const start = Date.now();
 
     res.on('finish', () => {
@@ -12,4 +14,4 @@ const logger = (req, res, next) => {
     next();
 };
 
-module.exports = logger;
+export default logger;
