@@ -44,8 +44,9 @@ const register = asyncHandler(async (req: AuthenticatedRequest, res: Response) =
     if (!email || typeof email !== 'string' || email.trim() === '') {
         throw createAppError('Email is required and must be a non-empty string.', 400);
     }
-    if (!password || typeof password !== 'string' || password.trim().length < 6) {
-        throw createAppError('Password is required and must be at least 6 characters.', 400);
+    // BUG FIX: Check length on the raw value, not trimmed — previously a password of 6 spaces would pass
+    if (!password || typeof password !== 'string' || password.length < 6 || password.trim() === '') {
+        throw createAppError('Password is required, must be at least 6 characters, and cannot be only whitespace.', 400);
     }
     // Prevent clients from self-assigning the admin role
     if (role !== undefined && role !== 'user') {

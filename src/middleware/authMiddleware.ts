@@ -10,8 +10,9 @@ import { createAppError } from '../types/errors';
 // Removing this helper would require duplicating header-parsing logic in every middleware.
 const extractBearerToken = (authHeader: string | undefined): string | null => {
     if (!authHeader || !authHeader.startsWith('Bearer ')) return null;
-    const token = authHeader.split(' ')[1];
-    return token && token.length > 0 ? token : null;
+    // BUG FIX: Use trim+slice instead of split to handle extra whitespace between "Bearer" and the token
+    const token = authHeader.slice('Bearer '.length).trim();
+    return token.length > 0 ? token : null;
 };
 
 // Primary authentication middleware — validates the JWT and attaches the decoded payload to req.user.

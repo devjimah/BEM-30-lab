@@ -39,5 +39,9 @@ const taskSchema = new Schema<ITask>({
     }
 });
 
+// Compound index — speeds up per-user task queries (find by owner, sorted by date).
+// Removing this index causes full collection scans on every getAllTasks call, degrading at scale.
+taskSchema.index({ owner: 1, createdAt: -1 });
+
 // Registered Mongoose model — removing this breaks all DB operations on the tasks collection
 export default model<ITask>('Task', taskSchema);
