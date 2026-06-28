@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 
+
+// Wrapper for async fns
 type AsyncRequestHandler = (
     req: Request,
     res: Response,
